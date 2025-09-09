@@ -1,0 +1,12 @@
+main:
+  B0 -> L1 L2
+  END -> 
+  L1 -> END
+  L2 -> END
+main paths: B0:0 END:2 L1:1 L2:1
+
+main rpo: B0 L2 L1 END
+
+main backedge: (none)
+
+main reducible: True

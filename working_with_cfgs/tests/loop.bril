@@ -1,0 +1,13 @@
+@main {
+  i: int = const 0;
+.LTOP:
+  k: int = const 3;
+  t: bool = lt i k;
+  br t .LBODY .LEND;
+.LBODY:
+  one: int = const 1;
+  i: int = add i one;
+  jmp .LTOP;
+.LEND:
+  ret;
+}

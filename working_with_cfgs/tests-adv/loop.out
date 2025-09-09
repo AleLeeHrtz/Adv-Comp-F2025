@@ -1,0 +1,12 @@
+main:
+  B0 -> LTOP
+  LBODY -> LTOP
+  LEND -> 
+  LTOP -> LBODY LEND
+main paths: B0:0 LBODY:2 LEND:2 LTOP:1
+
+main rpo: B0 LTOP LEND LBODY
+
+main backedge: LBODY->LTOP
+
+main reducible: True

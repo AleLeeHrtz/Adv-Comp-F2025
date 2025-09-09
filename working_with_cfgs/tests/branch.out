@@ -1,0 +1,5 @@
+main:
+  B0 -> L1 L2
+  END -> 
+  L1 -> END
+  L2 -> END

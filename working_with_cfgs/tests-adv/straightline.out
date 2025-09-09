@@ -1,0 +1,9 @@
+main:
+  B0 ->
+main paths: B0:0
+
+main rpo: B0
+
+main backedge: (none)
+
+main reducible: True

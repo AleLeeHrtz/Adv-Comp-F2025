@@ -1,0 +1,12 @@
+@main {
+  a: int = const 1;
+  br a .L1 .L2;
+.L1:
+  print a;
+  jmp .END;
+.L2:
+  a: int = const 42;
+  print a;
+.END:
+  ret;
+}

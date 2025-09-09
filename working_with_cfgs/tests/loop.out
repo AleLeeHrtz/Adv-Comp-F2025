@@ -1,0 +1,5 @@
+main:
+  B0 -> LTOP
+  LBODY -> LTOP
+  LEND -> 
+  LTOP -> LBODY LEND
