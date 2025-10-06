@@ -1,0 +1,4 @@
+=== Reaching Definitions Analysis ===
+entry:
+  in:  ∅
+  out: ('entry', 1, 'y'), ('entry', 2, 'z'), ('entry', 3, 'x'), ('entry', 4, 'w')

@@ -1,0 +1,8 @@
+# turnt.toml
+[[case]]
+name = "reaching_definitions"
+command = "bril2json < {filename} | python3 rd_simple.py"
+
+[[case]]
+name = "available_expressions"  
+command = "bril2json < {filename} | python3 ae_simple.py"

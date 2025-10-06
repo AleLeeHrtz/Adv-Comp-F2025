@@ -1,0 +1,7 @@
+@main {
+  x: int = const 1;
+  y: int = const 2;
+  z: int = add x y;
+  x: int = const 3;
+  w: int = mul x z;
+}

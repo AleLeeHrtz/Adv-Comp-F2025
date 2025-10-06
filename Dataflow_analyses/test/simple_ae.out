@@ -1,0 +1,4 @@
+=== Available Expressions Analysis ===
+entry:
+  in:  ∅
+  out: ('add', 'a', 'b')
