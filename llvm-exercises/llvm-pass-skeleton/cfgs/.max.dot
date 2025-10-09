@@ -1,0 +1,12 @@
+digraph "CFG for 'max' function" {
+	label="CFG for 'max' function";
+
+	Node0x60ba7d83e590 [shape=record,color="#b70d28ff", style=filled, fillcolor="#b70d2870" fontname="Courier",label="{2:\l|  %3 = icmp sgt i32 %0, %1\l  br i1 %3, label %4, label %5\l|{<s0>T|<s1>F}}"];
+	Node0x60ba7d83e590:s0 -> Node0x60ba7d83e490[tooltip="2 -> 4\nProbability 50.00%" ];
+	Node0x60ba7d83e590:s1 -> Node0x60ba7d83fbe0[tooltip="2 -> 5\nProbability 50.00%" ];
+	Node0x60ba7d83e490 [shape=record,color="#3d50c3ff", style=filled, fillcolor="#be242e70" fontname="Courier",label="{4:\l|  br label %6\l}"];
+	Node0x60ba7d83e490 -> Node0x60ba7d83fd20[tooltip="4 -> 6\nProbability 100.00%" ];
+	Node0x60ba7d83fbe0 [shape=record,color="#3d50c3ff", style=filled, fillcolor="#be242e70" fontname="Courier",label="{5:\l|  br label %6\l}"];
+	Node0x60ba7d83fbe0 -> Node0x60ba7d83fd20[tooltip="5 -> 6\nProbability 100.00%" ];
+	Node0x60ba7d83fd20 [shape=record,color="#b70d28ff", style=filled, fillcolor="#b70d2870" fontname="Courier",label="{6:\l|  %.0 = phi i32 [ %0, %4 ], [ %1, %5 ]\l  ret i32 %.0\l}"];
+}

@@ -1,0 +1,15 @@
+digraph "CFG for 'gcd' function" {
+	label="CFG for 'gcd' function";
+
+	Node0x648162039720 [shape=record,color="#3d50c3ff", style=filled, fillcolor="#d24b4070" fontname="Courier",label="{2:\l|  %3 = icmp ne i32 %1, 0\l  br i1 %3, label %.lr.ph, label %7\l|{<s0>T|<s1>F}}"];
+	Node0x648162039720:s0 -> Node0x648162039620[tooltip="2 -> .lr.ph\nProbability 62.50%" ];
+	Node0x648162039720:s1 -> Node0x64816203b290[tooltip="2 -> 7\nProbability 37.50%" ];
+	Node0x648162039620 [shape=record,color="#3d50c3ff", style=filled, fillcolor="#d6524470" fontname="Courier",label="{.lr.ph:\l|  br label %4\l}"];
+	Node0x648162039620 -> Node0x64816203b390[tooltip=".lr.ph -> 4\nProbability 100.00%" ];
+	Node0x64816203b390 [shape=record,color="#b70d28ff", style=filled, fillcolor="#b70d2870" fontname="Courier",label="{4:\l|  %.03 = phi i32 [ %0, %.lr.ph ], [ %.012, %4 ]\l  %.012 = phi i32 [ %1, %.lr.ph ], [ %5, %4 ]\l  %5 = srem i32 %.03, %.012\l  %6 = icmp ne i32 %5, 0\l  br i1 %6, label %4, label %._crit_edge, !llvm.loop !6\l|{<s0>T|<s1>F}}"];
+	Node0x64816203b390:s0 -> Node0x64816203b390[tooltip="4 -> 4\nProbability 96.88%" ];
+	Node0x64816203b390:s1 -> Node0x64816203b690[tooltip="4 -> ._crit_edge\nProbability 3.12%" ];
+	Node0x64816203b690 [shape=record,color="#3d50c3ff", style=filled, fillcolor="#d6524470" fontname="Courier",label="{._crit_edge:\l|  %split = phi i32 [ %.012, %4 ]\l  br label %7\l}"];
+	Node0x64816203b690 -> Node0x64816203b290[tooltip="._crit_edge -> 7\nProbability 100.00%" ];
+	Node0x64816203b290 [shape=record,color="#3d50c3ff", style=filled, fillcolor="#d24b4070" fontname="Courier",label="{7:\l|  %.0.lcssa = phi i32 [ %split, %._crit_edge ], [ %0, %2 ]\l  ret i32 %.0.lcssa\l}"];
+}
