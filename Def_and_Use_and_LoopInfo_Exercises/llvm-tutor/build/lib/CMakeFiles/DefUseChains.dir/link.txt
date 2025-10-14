@@ -1,0 +1,1 @@
+/usr/lib/llvm-18/bin/clang++ -fPIC  -Wall  -fdiagnostics-color=always -fvisibility-inlines-hidden -g -shared -Wl,-soname,libDefUseChains.so -o libDefUseChains.so CMakeFiles/DefUseChains.dir/DefUseChains.cpp.o   -L/usr/lib/llvm-18/lib 
