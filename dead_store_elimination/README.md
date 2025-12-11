@@ -15,7 +15,7 @@ How to Run:
 ./run_everything.sh
 ```
 
-This compiles everything and runs all tests automatically. The tests created can be found in the dir tests/test_dse<n>.c | n = 1 - 8. Explanation on why each specific test can be found inside each specific file.
+This compiles everything and runs all tests automatically. The tests created can be found in the dir tests/test_dse\<n\>.c | n = 1 - 8. Explanation on why each specific test can be found inside each specific file.
 
 Results:
 
