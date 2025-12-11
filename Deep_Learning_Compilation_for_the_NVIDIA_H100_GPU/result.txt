@@ -1,0 +1,77 @@
+
+Detected GPU architecture: sm_90
+✓ Target: NVIDIA H100 (Hopper architecture)
+
+Reading input file: tiny_mlp_linalg.mlir
+✓ Loaded 3,116 bytes
+
+================================================================================
+Applying MLIR transformation passes
+================================================================================
+
+Pass pipeline:
+  1. canonicalize - Simplify IR
+  2. one-shot-bufferize - Convert tensors to memrefs
+  3. convert-linalg-to-affine-loops - Linalg -> Affine
+  4. affine-loop-invariant-code-motion - Optimize loops
+  5. convert-affine-for-to-gpu - Affine -> GPU kernels
+  6. gpu-kernel-outlining - Extract GPU kernels
+  7. lower-affine - Affine -> Standard
+  8. gpu-decompose-memrefs - Prepare memory operations
+  9. convert-gpu-to-nvvm - GPU dialect -> NVVM
+  10. nvvm-attach-target - Target sm_90 with PTX 8.0
+  11. convert-nvvm-to-llvm - NVVM -> LLVM IR
+  12. gpu-to-llvm - Finalize GPU lowering
+
+Running pass manager...
+✓ All passes completed successfully!
+
+================================================================================
+Output saved
+================================================================================
+✓ GPU-ready MLIR saved to: tiny_mlp_gpu.mlir
+✓ File size: 29,647 bytes
+
+MLIR statistics:
+  Total lines: 464
+  GPU kernel references: 9
+  NVVM operations: 36
+  PTX indicators: 27
+
+================================================================================
+
+================================================================================
+Sample of final MLIR (first 30 lines):
+================================================================================
+  1: module attributes {gpu.container_module} {
+  2:   llvm.func @malloc(i64) -> !llvm.ptr
+  3:   llvm.mlir.global private constant @__constant_2xf32(dense_resource<torch_tensor_2_torch.float32> : tensor<2xf32>) {addr_space = 0 : i32, alignment = 64 : i64} : !llvm.array<2 x f32>
+  4:   llvm.mlir.global private constant @__constant_2x8xf32(dense_resource<torch_tensor_2_8_torch.float32> : tensor<2x8xf32>) {addr_space = 0 : i32, alignment = 64 : i64} : !llvm.array<2 x array<8 x f32>>
+  5:   llvm.mlir.global private constant @__constant_8x4xf32(dense_resource<torch_tensor_8_4_torch.float32> : tensor<8x4xf32>) {addr_space = 0 : i32, alignment = 64 : i64} : !llvm.array<8 x array<4 x f32>>
+  6:   llvm.mlir.global private constant @__constant_8xf32(dense_resource<torch_tensor_8_torch.float32> : tensor<8xf32>) {addr_space = 0 : i32, alignment = 64 : i64} : !llvm.array<8 x f32>
+  7:   llvm.func @main(%arg0: !llvm.ptr) -> !llvm.ptr {
+  8:     %0 = llvm.mlir.poison : !llvm.struct<(ptr, ptr, i64, array<2 x i64>, array<2 x i64>)>
+  9:     %1 = llvm.insertvalue %arg0, %0[0] : !llvm.struct<(ptr, ptr, i64, array<2 x i64>, array<2 x i64>)> 
+ 10:     %2 = llvm.insertvalue %arg0, %1[1] : !llvm.struct<(ptr, ptr, i64, array<2 x i64>, array<2 x i64>)> 
+ 11:     %3 = llvm.mlir.constant(0 : index) : i64
+ 12:     %4 = llvm.insertvalue %3, %2[2] : !llvm.struct<(ptr, ptr, i64, array<2 x i64>, array<2 x i64>)> 
+ 13:     %5 = llvm.mlir.constant(1 : index) : i64
+ 14:     %6 = llvm.insertvalue %5, %4[3, 0] : !llvm.struct<(ptr, ptr, i64, array<2 x i64>, array<2 x i64>)> 
+ 15:     %7 = llvm.mlir.constant(4 : index) : i64
+ 16:     %8 = llvm.insertvalue %7, %6[4, 0] : !llvm.struct<(ptr, ptr, i64, array<2 x i64>, array<2 x i64>)> 
+ 17:     %9 = llvm.mlir.constant(4 : index) : i64
+ 18:     %10 = llvm.insertvalue %9, %8[3, 1] : !llvm.struct<(ptr, ptr, i64, array<2 x i64>, array<2 x i64>)> 
+ 19:     %11 = llvm.mlir.constant(1 : index) : i64
+ 20:     %12 = llvm.insertvalue %11, %10[4, 1] : !llvm.struct<(ptr, ptr, i64, array<2 x i64>, array<2 x i64>)> 
+ 21:     %13 = llvm.mlir.constant(2 : index) : i64
+ 22:     %14 = llvm.mlir.constant(8 : index) : i64
+ 23:     %15 = llvm.mlir.constant(1 : index) : i64
+ 24:     %16 = llvm.mlir.constant(4 : index) : i64
+ 25:     %17 = llvm.mlir.constant(0 : index) : i64
+ 26:     %18 = llvm.mlir.constant(0.000000e+00 : f32) : f32
+ 27:     %19 = llvm.mlir.constant(8 : index) : i64
+ 28:     %20 = llvm.mlir.constant(1 : index) : i64
+ 29:     %21 = llvm.mlir.zero : !llvm.ptr
+ 30:     %22 = llvm.getelementptr %21[%19] : (!llvm.ptr, i64) -> !llvm.ptr, f32
+...
+(434 more lines)
