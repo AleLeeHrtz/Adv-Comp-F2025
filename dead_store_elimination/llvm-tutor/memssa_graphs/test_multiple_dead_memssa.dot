@@ -1,0 +1,19 @@
+digraph "MemorySSA_test_multiple_dead" {
+  label="MemorySSA for function: test_multiple_dead";
+  rankdir=TB;
+  node [shape=box, fontname="Courier"];
+
+  // LiveOnEntry
+  node4 [label="LiveOnEntry", style=filled, fillcolor=lightblue];
+
+  // Basic Block: 
+  node0 [label="MemoryDef\n  store i32 1, ptr %1, align 4", style=filled, fillcolor=lightgreen];
+  node4 -> node0;
+  node1 [label="MemoryDef\n  store i32 2, ptr %1, align 4", style=filled, fillcolor=lightgreen];
+  node0 -> node1;
+  node2 [label="MemoryDef\n  store i32 3, ptr %1, align 4", style=filled, fillcolor=lightgreen];
+  node1 -> node2;
+  node3 [label="MemoryUse\n  %2 = load i32, ptr %1, align 4", style=filled, fillcolor=lightcoral];
+  node2 -> node3 [style=dashed];
+
+}

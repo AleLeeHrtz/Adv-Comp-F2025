@@ -1,0 +1,21 @@
+digraph "MemorySSA_test_live_store" {
+  label="MemorySSA for function: test_live_store";
+  rankdir=TB;
+  node [shape=box, fontname="Courier"];
+
+  // LiveOnEntry
+  node5 [label="LiveOnEntry", style=filled, fillcolor=lightblue];
+
+  // Basic Block: 
+  node0 [label="MemoryDef\n  store i32 10, ptr %1, align 4", style=filled, fillcolor=lightgreen];
+  node5 -> node0;
+  node1 [label="MemoryUse\n  %3 = load i32, ptr %1, align 4", style=filled, fillcolor=lightcoral];
+  node0 -> node1 [style=dashed];
+  node2 [label="MemoryDef\n  store i32 %3, ptr %2, align 4", style=filled, fillcolor=lightgreen];
+  node0 -> node2;
+  node3 [label="MemoryDef\n  store i32 20, ptr %1, align 4", style=filled, fillcolor=lightgreen];
+  node2 -> node3;
+  node4 [label="MemoryUse\n  %4 = load i32, ptr %2, align 4", style=filled, fillcolor=lightcoral];
+  node3 -> node4 [style=dashed];
+
+}

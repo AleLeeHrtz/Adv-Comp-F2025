@@ -1,0 +1,15 @@
+digraph "MemorySSA_main" {
+  label="MemorySSA for function: main";
+  rankdir=TB;
+  node [shape=box, fontname="Courier"];
+
+  // LiveOnEntry
+  node2 [label="LiveOnEntry", style=filled, fillcolor=lightblue];
+
+  // Basic Block: 
+  node0 [label="MemoryDef\n  store i32 0, ptr %1, align 4", style=filled, fillcolor=lightgreen];
+  node2 -> node0;
+  node1 [label="MemoryDef\n  %2 = call i32 @test_multiple_dead()", style=filled, fillcolor=lightgreen];
+  node0 -> node1;
+
+}

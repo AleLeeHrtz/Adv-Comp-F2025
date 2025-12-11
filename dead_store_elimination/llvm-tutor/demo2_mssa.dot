@@ -1,0 +1,5 @@
+digraph "MSSA" {
+	label="MSSA";
+
+	Node0x5df064652560 [shape=record,style=filled, fillcolor=lightpink,label="{\l|  %2 = getelementptr inbounds i32, ptr %0, i64 0\l; 1 = MemoryDef(liveOnEntry)\l  store i32 1, ptr %2, align 4\l  %3 = getelementptr inbounds i32, ptr %0, i64 0\l; 2 = MemoryDef(1)\l  store i32 2, ptr %3, align 4\l  %4 = getelementptr inbounds i32, ptr %0, i64 0\l; MemoryUse(2)\l  %5 = load i32, ptr %4, align 4\l  ret void\l}"];
+}
